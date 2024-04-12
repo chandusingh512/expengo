@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "@emotion/styled";
+import LogoutButton from "./Logout";
 
 const NavbarContainer = styled.nav`
   display: flex;
@@ -36,16 +37,11 @@ const NavbarLink = styled(Link)`
 const Navbar = () => {
   return (
     <NavbarContainer>
-      <NavbarBrand to="/">My App</NavbarBrand>
+      <NavbarBrand to="/">SmartCOMM</NavbarBrand>
       <NavbarMenu>
+    
         <NavbarItem>
-          <NavbarLink to="/">Home</NavbarLink>
-        </NavbarItem>
-        <NavbarItem>
-          <NavbarLink to="/about">About</NavbarLink>
-        </NavbarItem>
-        <NavbarItem>
-          <NavbarLink to="/contact">Contact</NavbarLink>
+         <LogoutButton/>
         </NavbarItem>
       </NavbarMenu>
     </NavbarContainer>
