@@ -1,4 +1,5 @@
 import Navbar from './Navbar';
+import UserList from './UserList';
 
  
 export default function Home() {
@@ -6,18 +7,11 @@ export default function Home() {
  return (
      <>
     <Navbar/>
-      <div>
-        
-
-
+    <div>
       <h1>Welcome to our Homepage!</h1>
-      <p>Here you can find all the latest news and updates about our company.</p>
-      <div/>
-      
-     <div>
-    </div> 
+     
        </div>
-   
+       <UserList/>  
    </>
  )
 }
