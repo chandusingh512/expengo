@@ -7,9 +7,6 @@ import Signup from "./PagesAll/Signup";
 
  
 function App() {
-  
-
-  
  return (
    <BrowserRouter>
      {/* We are wrapping our whole app with UserProvider so that */}

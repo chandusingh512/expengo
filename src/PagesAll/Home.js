@@ -1,10 +1,7 @@
-import { React, useState, useCallback, } from 'react'
+import { React, useState, } from 'react'
 import Navbar from './Navbar';
 import UserList from './UserList';
-import { UserState } from 'realm-web';
 import axios from 'axios';
-import OAuth from 'oauth-1.0a';
-import createHmac from 'crypto-browserify/crypto';
 
 
 
@@ -32,7 +29,7 @@ export default function Home() {
 
 
 
-      
+
 
 
 
@@ -56,45 +53,43 @@ export default function Home() {
       console.log('apiURL:', apiUrl);
       console.log('xmlData:', xmlData);
 
-      
-    
+
+
 
       const response = await axios.post(apiUrl, xmlData, {
         headers: {
-       
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/xml',
-        Authorization: `Bearer ${accessToken}`,
-          
-        },
-  });
 
-  console.log('Response:', response.data);
-  // Handle the response
-} catch (error) {
-  console.error('Error:', error);
-  // Handle error
-}
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/xml',
+          Authorization: `Bearer ${accessToken}`,
+
+        },
+      });
+
+      console.log('Response:', response.data);
+      // Handle the response
+    } catch (error) {
+      console.error('Error:', error);
+      // Handle error
+    }
   }
 
 
-return (
-  <>
-    <button onClick={handleSubmit}>Send XML data</button>
-    <div><Navbar /></div>
+  return (
+    <>
+
+      <div><Navbar /></div>
 
 
 
+      <div style={{ display: 'grid', justifyContent: 'center', flexDirection: 'row', fontSize: '20pt' }}>
+        <button onClick={handleSubmit}>Send XML data</button>
+        <h1>Welcome to our Homepage!</h1>
 
+      </div>
+      <UserList />
 
+    </>
+  )
 
-    <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
-      <h1>Welcome to our Homepage!</h1>
-
-    </div>
-    <UserList />
-
-  </>
-)
-  
 }
