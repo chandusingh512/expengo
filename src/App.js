@@ -4,8 +4,12 @@ import Home from "./PagesAll/Home";
 import Login from "./PagesAll/Login";
 import PrivateRoute from "./PagesAll/PrivateRoute";
 import Signup from "./PagesAll/Signup";
+
  
 function App() {
+  
+
+  
  return (
    <BrowserRouter>
      {/* We are wrapping our whole app with UserProvider so that */}

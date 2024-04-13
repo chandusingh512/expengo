@@ -29,6 +29,13 @@ export default function Home() {
     e.preventDefault();
 
     try {
+
+
+
+      
+
+
+
       const accessToken = 'OAuth oauth_consumer_key="8885859a-b6c7-49b8-8b6f-ba7a6feea368%21chandu.singh%40exavalu.dev.com", oauth_nonce="KQ9JhsNAV8AvMiq7xyDwDtznIa7sL9zo", oauth_signature="27HE4%2BYcV0%2BGJwHEMtfO6tvgu0o%3D", oauth_signature_method="HMAC-SHA1", oauth_timestamp="1703056727", oauth_version="1.0"'; // Replace with your OAuth access token
       const apiUrl = 'https://na10-sb.smartcommunications.cloud/one/oauth1/api/v12/job/generateDraft?includeDocumentData=true'; // Replace with your API endpoint URL
 
@@ -45,42 +52,49 @@ export default function Home() {
         <transactionDataType>string</transactionDataType>
       </documentRequest>
       `;
-      
+
       console.log('apiURL:', apiUrl);
       console.log('xmlData:', xmlData);
+
+      
+    
+
       const response = await axios.post(apiUrl, xmlData, {
         headers: {
-          'Content-Type': 'application/xml',
-          Authorization: `Bearer ${accessToken}`,
+       
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/xml',
+        Authorization: `Bearer ${accessToken}`,
           
         },
-      });
+  });
 
-      console.log('Response:', response.data);
-      // Handle the response
-    } catch (error) {
-      console.error('Error:', error);
-      // Handle error
-    }
+  console.log('Response:', response.data);
+  // Handle the response
+} catch (error) {
+  console.error('Error:', error);
+  // Handle error
+}
   }
+
+
+return (
+  <>
+    <button onClick={handleSubmit}>Send XML data</button>
+    <div><Navbar /></div>
+
+
+
+
+
+
+    <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
+      <h1>Welcome to our Homepage!</h1>
+
+    </div>
+    <UserList />
+
+  </>
+)
   
-
-  return (
-    <>
-      <button onClick={handleSubmit}>Send XML data</button>
-      <div><Navbar /></div>
-
-
-
-
-
-
-      <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
-        <h1>Welcome to our Homepage!</h1>
-
-      </div>
-      <UserList />
-
-    </>
-  )
 }
