@@ -34,7 +34,7 @@ const Home = () => {
     </documentRequest>
     `;// XML data to send
     const requestData = {
-      url: 'https://na10-sb.smartcommunications.cloud/one/oauth1/api/v12/job/generateDraft?includeDocumentData=true',
+      url: 'https://na10-sb.smartcommunications.cloud/one/oauth1/api/v12/job/generateDocument?includeDocumentData=true',
       method: 'POST',
       data: requestBody,
     };
@@ -47,6 +47,7 @@ const Home = () => {
         headers: {
           ...headers,
           'Content-Type': 'application/xml', // Set content type to XML
+          'Accept': 'application/xml',
         },
         body: requestBody,
       });
