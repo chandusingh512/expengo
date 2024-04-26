@@ -5,17 +5,21 @@ import CryptoJS from 'crypto-js';
 import Navbar from './Navbar'
 import UserList from './UserList'
 
-function hash_function_sha1(ConsumerKey, ConsumerSecret) {
-  return CryptoJS.HmacSHA1(ConsumerKey, ConsumerSecret).toString(CryptoJS.enc.Base64);
-}
+const consumerKey = '8885859a-b6c7-49b8-8b6f-ba7a6feea368!chandu.singh@exavalu.dev.com';
+const consumerSecret = '23f179c2-1071-4317-8a24-298abbf0c723';
 
+// Initialize OAuth object
 const oauth = OAuth({
-  consumer: {
-    key: '8885859a-b6c7-49b8-8b6f-ba7a6feea368!chandu.singh@exavalu.dev.com',
-    secret: '23f179c2-1071-4317-8a24-298abbf0c723',
-  },
+  consumer: { key: consumerKey, secret: consumerSecret },
   signature_method: 'HMAC-SHA1',
-  hash_function: hash_function_sha1,
+  hash_function(base_string, key) {
+
+   
+   const hashValue= CryptoJS.HmacSHA1(base_string, key).toString(CryptoJS.enc.Base64);
+   console.log('hashValue= ',hashValue);
+    return hashValue;
+    
+  }
 });
 
 const data = `<?xml version="1.0"?>
