@@ -14,6 +14,7 @@
     "crypto": "^1.0.1",
     "crypto-es": "^2.1.0",
     "crypto-js": "^3.3.0",
+    "jssha": "^3.3.1",
     "node-oauth": "^0.3.0",
     "oauth-1.0a": "^2.2.6",
     "react": "^18.2.0",
