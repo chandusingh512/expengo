@@ -3,19 +3,23 @@ import OAuth from 'oauth-1.0a';
 import Navbar from './Navbar'
 import UserList from './UserList'
 import CryptoJS from 'crypto-js';
+import OAuthBaseStringGenerator from './base_string';
 
 const Home = () => {
+  
   // Set your OAuth credentials
   const oauth = OAuth({
+     base_string:OAuthBaseStringGenerator.base_string,
     consumer: {
       key: '8885859a-b6c7-49b8-8b6f-ba7a6feea368!chandu.singh@exavalu.dev.com',
-      secret: '23f179c2-1071-4317-8a24-298abbf0c723',
+      secretkey: '23f179c2-1071-4317-8a24-298abbf0c723',
     },
     signature_method: 'HMAC-SHA1',
-    hash_function(base_string, key) {
-      return CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA1(base_string, key));
+    hash_function(base_string,secretkey) {
+      return CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA1(base_string, secretkey));
     },
   });
+  // this.props.onBaseStringGenerated(baseString);
 
   const [responseData, setResponseData] = useState(null);
 
@@ -63,9 +67,10 @@ const Home = () => {
   return (
     <div>
       <Navbar />
+      
       <UserList />
       <button onClick={postData}>Hit API</button>
-     {/* {responseData && <pre>{JSON.stringify(responseData, null, 2)}</pre>} */}
+     {responseData && <pre>{JSON.stringify(responseData, null, 2)}</pre>}
     </div>
   );
 };
